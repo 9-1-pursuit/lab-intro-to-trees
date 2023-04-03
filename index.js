@@ -14,26 +14,66 @@ class Tree {
   // It should return either a reference to the node that contains that data or it should return null.
   // recursion, loop through each tree node, for each of it's children (if any) call function again to repeat cycle until .data = argument
   findNode(data, root = this.root) {
+    // let match = null
+    console.log("root", root)
     if(root.data === data){
+      console.log("rootData")
       return root
     }
-    else{
-      if(root.children.length > 0){
-        const match = root.children.map(child => {
-          if(child.data === data){
-            console.log("child- stop", child)
-            return child
+    const match = root.children.map(child => {
+      if(child.data === data){
+        console.log("rootData")
+        return child
+      }
+      if(child.children.length === 0){
+        console.log('no children')
+        return null
+      }
+      if(child.children.length > 0){
+        const  children = child.children
+        for(let i = 0; i < children.length; i++){
+           if(children[i].data === data){
+            console.log("child- stop", children[i])
+            return children[i]
+            }
+            else {
+              console.log("recursion", children[i])
+              this.findNode(data, children[i])
+            }
           }
-          else {
-      console.log("recursion", child)
-      this.findNode(data, child)
     }
-  })
-  console.log("match-stop", match)
-  const [node] = match.filter(el => el !== undefined)
-  return node ? node : null
-}
-    }
+      return null
+    })
+    console.log("match", match)
+    const node = match.find(el => el !== null) ? match.find(el => el !== null) : null
+    return node
+    
+  //   if(root.data === data){
+  //     return root
+  //   }
+  //   if(root.children.length === 0){
+  //     console.log('no children')
+  //     return null
+  //   }
+  //   if(root.children.length > 0){
+  //     const  children = root.children
+  //     for(let i = 0; i < children.length; i++){
+  //        if(children[i].data === data){
+  //         console.log("child- stop", children[i])
+  //         return children[i]
+  //         }
+  //         else {
+  //           console.log("recursion", children[i])
+  //           this.findNode(data, children[i])
+  //         }
+  //       }
+  // }
+  //   return null
+
+     //  TreeNode { data: 'C', children: [] },
+    // else{
+    //     return null
+    // }
    
   
 }
@@ -89,7 +129,38 @@ b.children.push(e, f, g);
 d.children.push(h);
 treeTest = new Tree(a);
 // console.log(inspect(treeTest, { colors: true, depth: 12 }))
-console.log(treeTest.findNode("H"))
+console.log(treeTest.findNode("D"))
 
 
 module.exports = { TreeNode, Tree };
+
+
+
+        // return match[0] ? match[0] : null
+  //       root.children.forEach(child => {
+  //         if(child.data === data){
+  //           console.log("child- stop", child)
+  //            match.push(child)
+  //         }
+  //         else {
+  //     console.log("recursion", child)
+  //     this.findNode(data, child)
+  //   }
+  // })
+
+
+//       if(root.children.length > 0){
+//         const match = root.children.map(child => {
+//           if(child.data === data){
+//             console.log("child- stop", child)
+//             return child
+//           }
+//           else {
+//       console.log("recursion", child)
+//       this.findNode(data, child)
+//     }
+//   })
+//   console.log("match-stop", match)
+//   const [node] = match.filter(el => el !== undefined)
+//   return node ? node : null
+// }

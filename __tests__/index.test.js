@@ -36,6 +36,7 @@ describe("Tree", () => {
       const expected = treeA.root.children[2];
 
       expect(actual).toEqual(expected);
+      // {"children": [{"children": [], "data": "H"}], "data": "D"}
     });
 
     it("should return a reference to a leaf node if it exists", () => {
@@ -55,6 +56,7 @@ describe("Tree", () => {
       const expected = null;
 
       expect(actual).toEqual(expected);
+      //  null
     });
   });
 
@@ -100,6 +102,7 @@ describe("Tree", () => {
       const expected1 = treeB.root.children[1].children[0];
 
       expect(actual1).toEqual(expected1);
+      // {"children": [{"children": [{"children": [], "data": "I"}], "data": "H"}], "data": "G"}
 
       const actual2 = treeB.findNode("G");
       const expected2 =
@@ -112,6 +115,7 @@ describe("Tree", () => {
       const expected1 = treeB.root.children[0].children[0];
 
       expect(actual1).toEqual(expected1);
+      // {"children": [], "data": "I"}
 
       const actual2 = treeB.findNode("I");
       const expected2 =
@@ -126,6 +130,7 @@ describe("Tree", () => {
       const expected = null;
 
       expect(actual).toEqual(expected);
+      // null
     });
   });
 });
