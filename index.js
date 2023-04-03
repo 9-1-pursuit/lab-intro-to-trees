@@ -20,7 +20,11 @@ class Tree {
       console.log("rootData")
       return root
     }
+    if(root.children.length === 0){
+      return null
+    }
     const match = root.children.map(child => {
+      console.log("child", child)
       if(child.data === data){
         console.log("rootData")
         return child
@@ -38,7 +42,8 @@ class Tree {
             }
             else {
               console.log("recursion", children[i])
-              return this.findNode(data, children[i])
+              this.findNode(data, children[i])
+              // return this.findNode(data, children[i])
             }
           }
     }
@@ -103,7 +108,8 @@ class Tree {
 // d.children.push(h);
 // treeTest = new Tree(a);
 // console.log(inspect(treeTest, { colors: true, depth: 12 }))
-// console.log(treeTest.findNode("D"))
+// console.log(treeTest.findNode("F"))
+// {"children": [], "data": "F"}
 
 
 let treeTest2
@@ -125,7 +131,7 @@ const a = new TreeNode("A");
       h.children.push(i);
       treeTest2 = new Tree(a);
   console.log(inspect(treeTest2, { colors: true, depth: 12 }))
-console.log(treeTest2.findNode("G"))
+console.log(treeTest2.findNode("I"))
 
 /* Tree {
   root: TreeNode {
