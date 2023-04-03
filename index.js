@@ -38,44 +38,18 @@ class Tree {
             }
             else {
               console.log("recursion", children[i])
-              this.findNode(data, children[i])
+              return this.findNode(data, children[i])
             }
           }
     }
       return null
     })
     console.log("match", match)
-    const node = match.find(el => el !== null) ? match.find(el => el !== null) : null
-    return node
-    
-  //   if(root.data === data){
-  //     return root
-  //   }
-  //   if(root.children.length === 0){
-  //     console.log('no children')
-  //     return null
-  //   }
-  //   if(root.children.length > 0){
-  //     const  children = root.children
-  //     for(let i = 0; i < children.length; i++){
-  //        if(children[i].data === data){
-  //         console.log("child- stop", children[i])
-  //         return children[i]
-  //         }
-  //         else {
-  //           console.log("recursion", children[i])
-  //           this.findNode(data, children[i])
-  //         }
-  //       }
-  // }
-  //   return null
+    const node = match.find(el => el !== null) ? 
+    match.find(el => el !== null) : 
+    null
 
-     //  TreeNode { data: 'C', children: [] },
-    // else{
-    //     return null
-    // }
-   
-  
+    return node
 }
 }
 
@@ -115,21 +89,76 @@ class Tree {
 } */
 
 
-let treeTest
-const a = new TreeNode("A");
-const b = new TreeNode("B");
-const c = new TreeNode("C");
-const d = new TreeNode("D");
-const e = new TreeNode("E");
-const f = new TreeNode("F");
-const g = new TreeNode("G");
-const h = new TreeNode("H");
-a.children.push(b, c, d);
-b.children.push(e, f, g);
-d.children.push(h);
-treeTest = new Tree(a);
+// let treeTest
+// const a = new TreeNode("A");
+// const b = new TreeNode("B");
+// const c = new TreeNode("C");
+// const d = new TreeNode("D");
+// const e = new TreeNode("E");
+// const f = new TreeNode("F");
+// const g = new TreeNode("G");
+// const h = new TreeNode("H");
+// a.children.push(b, c, d);
+// b.children.push(e, f, g);
+// d.children.push(h);
+// treeTest = new Tree(a);
 // console.log(inspect(treeTest, { colors: true, depth: 12 }))
-console.log(treeTest.findNode("D"))
+// console.log(treeTest.findNode("D"))
+
+
+let treeTest2
+const a = new TreeNode("A");
+      const b = new TreeNode("B");
+      const c = new TreeNode("C");
+      const d = new TreeNode("D");
+      const e = new TreeNode("E");
+      const f = new TreeNode("F");
+      const g = new TreeNode("G");
+      const h = new TreeNode("H");
+      const i = new TreeNode("I");
+      a.children.push(b, c);
+      b.children.push(d);
+      c.children.push(e);
+      e.children.push(f);
+      f.children.push(g);
+      g.children.push(h);
+      h.children.push(i);
+      treeTest2 = new Tree(a);
+  console.log(inspect(treeTest2, { colors: true, depth: 12 }))
+console.log(treeTest2.findNode("G"))
+
+/* Tree {
+  root: TreeNode {
+    data: 'A',
+    children: [
+      TreeNode {
+        data: 'B',
+        children: [ TreeNode { data: 'D', children: [] } ]
+      },
+      TreeNode {
+        data: 'C',
+        children: [
+          TreeNode {
+            data: 'E',
+            children: [
+              TreeNode {
+                data: 'F',
+                children: [
+                  TreeNode {
+                    data: 'G',
+                    children: [
+                      TreeNode { data: 'H', children: [ [TreeNode] ] }
+                    ]
+                  }
+                ]
+              }
+            ]
+          }
+        ]
+      }
+    ]
+  }
+} */
 
 
 module.exports = { TreeNode, Tree };
