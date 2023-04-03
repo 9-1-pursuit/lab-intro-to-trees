@@ -42,8 +42,8 @@ class Tree {
             }
             else {
               console.log("recursion", children[i])
-              this.findNode(data, children[i])
-              // return this.findNode(data, children[i])
+              // this.findNode(data, children[i])
+              return this.findNode(data, children[i])
             }
           }
     }
